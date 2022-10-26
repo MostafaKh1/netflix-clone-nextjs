@@ -4,9 +4,11 @@ import styles from "../styles/Header.module.css";
 import { BsSearch } from "react-icons/bs";
 import { BsBellFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import useAuth from "./../hooks/useAuth";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,11 @@ function Header() {
         <p className="hidden lg:inline">Kids</p>
         <BsBellFill size={32} />
         <Link href="/account">
-          <img className="w-8 " src="/Netflix-avatar.png " />
+          <img
+            onClick={logout}
+            className="w-8 cursor-pointer "
+            src="/Netflix-avatar.png "
+          />
         </Link>
       </div>
     </header>
